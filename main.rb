@@ -18,16 +18,3 @@ puts '==========================================================================
 require './lib/command_handler.rb'
 CommandHandler.start
 
-# while valid_command?
-# 	case command
-# 	when place
-# 		pawn.place
-# 	when move
-# 		pawn.move()
-# 	when left, right
-# 	when report
-# 	else
-# 		puts 'invalid command'
-# 	end
-# 	command = gets() # Take other commands
-# end
