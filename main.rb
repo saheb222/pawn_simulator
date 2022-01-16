@@ -10,11 +10,6 @@ puts 'REPORT ===> to see the pawn status'
 
 puts '=========================================================================='
 
-# pawn = Pawn.new #blank pawn object
-
-# require './lib/pawn.rb'
-# require './lib/simulator.rb'
-# require './lib/'
 require './lib/command_handler.rb'
 CommandHandler.start
 
