@@ -30,9 +30,12 @@ module CommandValidator
   end
 
   def validate_move_args(args_arr)
-    return false if args_arr.count > 1
+    return true if args_arr.first.nil?
 
-    true
+    if args_arr.count == 1
+      return true if args_arr.first.match?(/^\d+$/) && ['1','2'].include?(args_arr.first)
+    end
+    false
   end
 
 end
