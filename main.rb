@@ -7,9 +7,11 @@ puts 'MOVE 1 ===> applicable for very first move'
 puts 'MOVE ===> applicable for subsequent moves'
 puts 'LEFT, RIGHT ===> to change the Pawn direction'
 puts 'REPORT ===> to see the pawn status'
-
+puts 'q ===> to quit'
 puts '=========================================================================='
 
 require './lib/command_handler.rb'
-CommandHandler.start
+pawn = Pawn.new
+board = Board.new
+CommandHandler.start(pawn, board)
 

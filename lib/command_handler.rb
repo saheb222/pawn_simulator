@@ -50,7 +50,9 @@ class CommandHandler
       while !command_handler.executable.eql?('Q')
         if command_handler.is_valid_command?
           command_handler.execute
-        end 
+        else
+          puts 'invalid command'
+        end
         command_handler.set_command!(get_user_command(command_handler.pawn&.on_boarded)) # Getting Next command
       end
     end
