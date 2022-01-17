@@ -30,7 +30,7 @@ RIGHT
 REPORT
 ```
 
-* `PLACE` will put the toy pawn on the board in position X,Y and facing NORTH, SOUTH, EAST or WEST and color(White or Black).
+* `PLACE` will put the pawn on the board in position X,Y and facing NORTH, SOUTH, EAST or WEST and color(White or Black).
 
 * The origin (0,0) can be considered to be the **SOUTH WEST** most corner.
 
