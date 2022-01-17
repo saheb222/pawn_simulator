@@ -1,13 +1,15 @@
 require_relative '../externals/externals.rb'
 class Pawn
-  attr_reader :x_coord, :y_coord, :direction, :color, :on_boarded
-  attr_accessor :first_move
   VALID_SIDES = %w[EAST WEST NORTH SOUTH]
   VALID_DIRECTIONS = %w[LEFT RIGHT]
   DIRECTION_MAP = {
     LEFT: { 'EAST' => 'NORTH', 'WEST' => 'SOUTH', 'NORTH'=> 'WEST', 'SOUTH' => 'EAST' },
     RIGHT: { 'EAST' => 'SOUTH', 'WEST' => 'NORTH', 'NORTH'=> 'EAST', 'SOUTH' => 'WEST' }
   }
+
+  attr_reader :x_coord, :y_coord, :direction, :color, :on_boarded
+  attr_accessor :first_move
+
   def initialize
     @first_move = true
   end
@@ -48,6 +50,7 @@ class Pawn
     !(color.nil? && direction.nil?)
   end
 
+  # check if the pawn is on the board or nor
   def already_placed?
     !(x_coord.nil? || y_coord.nil?)
   end

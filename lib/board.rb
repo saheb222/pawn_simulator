@@ -5,6 +5,7 @@ class Board
   DIRECTION_MAP = {}.freeze
   PAWN_RECORD = {}.freeze
 
+  # place the pwn on the board
   def place_pawn(pawn, x_axs = 0, y_axs = 0)
     raise StandardError.new('invalid pawn') unless valid_pawn?(pawn)
 
@@ -29,8 +30,8 @@ class Board
 
     raise StandardError.new('Fall Prevented!!!, wrong co-cordinates') if wrong_coordinates?(x_axs, y_axs)
 
-    pawn.set_coordinates!(x_axs, y_axs)
-    pawn.first_move = false if pawn.first_move
+    pawn.set_coordinates!(x_axs, y_axs) # change pawn postion, by setting new coordinates
+    pawn.first_move = false if pawn.first_move # Mark as first move has been peformed, if it is the first move
   rescue StandardError => e
     puts e.message
   end
@@ -45,10 +46,12 @@ class Board
     x_axs.negative? || y_axs.negative?
   end
   
+  # pawn is valid if the class is Pawn and color it has color and direction
   def valid_pawn?(pawn)
     pawn.class.eql?(Pawn) && pawn.valid?
   end
 
+  # method to find the new x, y for move operation
   def get_new_x_y(pawn, places)
     places ||= 1
     x_axs = pawn.x_coord
@@ -66,6 +69,9 @@ class Board
     [x_axs, y_axs]
   end
 
+  # move is valid
+  # in case of first move it should have places between 1 and 2
+  # in case of later move it shoud have place only one by default
   def is_a_valid_move?(first_move_status, places)
     return true if first_move_status && [1, 2].include?(places)
     
@@ -74,6 +80,9 @@ class Board
     false
   end
 
+  # coordinates can be wrong
+  # if any of the x and y is negative
+  # if the x, y, is greater than board's max_x, max_y
   def wrong_coordinates?(x_axs, y_axs)
     negative_coorinates?(x_axs, y_axs) || coordinates_outside_board?(x_axs, y_axs)
   end

@@ -6,12 +6,16 @@ require_relative 'command_validator'
 class CommandHandler
   extend CommandValidator
 
-  attr_accessor :command, :board, :pawn
+  attr_accessor :board, :pawn
   attr_reader :executable, :args
+
   def initialize(command)
     set_command!(command)
   end
 
+  # Split the command into two parts
+  # @executable contains main commands , eg: PLACE
+  # @args contains the arguments of the command, eg: 1,1,NORTH,BLACK
   def set_command!(command)
     splitted_command = command.split(' ')
     @executable = splitted_command.first
@@ -19,12 +23,16 @@ class CommandHandler
     self
   end
 
+  # this method checks if the command is valid or not
   def is_valid_command?
     self.class.validate_command(@executable, @args)
   end
 
+  # this method act as command runner
+  # Identify the main command and pefrom few checks before executing
   def execute
-    return unless additional_check_passed? 
+    return unless additional_check_passed?
+
     case @executable
     when 'PLACE'
       initiate_place_command
@@ -88,6 +96,8 @@ class CommandHandler
     puts e.message
   end
 
+  # This check is to validate if we already have performed a valid PLACE command
+  # before REPORT/LEFT/RIGHT/MOVE command
   def additional_check_passed?
     return true if pawn.already_placed? || executable.eql?('PLACE')
 
