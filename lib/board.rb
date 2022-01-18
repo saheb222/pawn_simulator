@@ -15,6 +15,7 @@ class Board
     
     pawn.set_coordinates!(x_axs, y_axs) # Set the initial position of the Pawn
     pawn.mark_as_placed # Mark the pawn as it has been placed on board
+    pawn.first_move = true
   rescue StandardError => e
     puts e.message
   end
