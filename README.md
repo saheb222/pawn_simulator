@@ -5,13 +5,14 @@
 ```bash
 git clone https://github.com/saheb222/pawn_simulator.git
 cd pawn_simulator
+bundle install
 ruby main.rb
 ```
 ### Exit from the application
 provide "q" (command) while asking for the input to exit anytime from the application
 ### Run test
 
-Inside the folder path and run `rspec`
+Inside the project path and run `bundle exec rspec`
 
 ## Description
 
